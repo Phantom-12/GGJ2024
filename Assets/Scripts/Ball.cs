@@ -5,12 +5,22 @@ using UnityEngine.InputSystem;
 
 public class Ball : MonoBehaviour
 {
-    private bool isThrowing;
+    bool isThrowing;
     Vector3 startPos;
     [SerializeField]
-    float flyDuration = 1.5f;
+    float followScaling;
     [SerializeField]
-    float returnDelay = 1.5f;
+    float flyDuration;
+    [SerializeField]
+    float goalToHoopDuration, goalToGroundDuration;
+    [SerializeField]
+    float fadeDuration;
+    [SerializeField]
+    float hitRefereeToGroundSpeed;
+    [SerializeField]
+    Vector2 knockedDir;
+    [SerializeField]
+    float knockedAwayDuration, knockedAwaySpeed;
 
     void Awake()
     {
@@ -18,49 +28,110 @@ public class Ball : MonoBehaviour
         startPos = transform.position;
     }
 
-    public void ThrowInputHandler(InputAction.CallbackContext callback)
+    void Update()
     {
-        if (callback.performed)
+        if (!isThrowing)
         {
-            Vector3 mousePos = Mouse.current.position.ReadValue();
-            mousePos.z = Camera.main.transform.position.z;
-            Ray ray = Camera.main.ScreenPointToRay(mousePos);
-            RaycastHit raycastHit;
-            if (Physics.Raycast(ray, out raycastHit, 100))
-            {
-                Debug.Log(raycastHit.point);
-                Debug.Log(raycastHit.transform.gameObject.name);
-                Debug.DrawLine(raycastHit.point, raycastHit.point + Vector3.right, Color.red, 100);
-                Debug.DrawLine(raycastHit.point, raycastHit.point + Vector3.up, Color.red, 100);
-                Throw(raycastHit.point);
-            }
-            // Debug.DrawRay(ray.origin,ray.direction,Color.red,100);
-            // Debug.Log(ray);
+            Vector2 ballStartScreenPos = Camera.main.WorldToScreenPoint(startPos);
+            Vector2 mousePos = Mouse.current.position.ReadValue();
+            transform.position = startPos + (Vector3)(mousePos - ballStartScreenPos) * followScaling;
         }
     }
 
-    void Throw(Vector3 tarpos)
+    public IEnumerator Throw(Vector3 tarpos)
     {
-        StopAllCoroutines();
-        transform.position = startPos;
-        StartCoroutine(FlyToTarget(transform, tarpos));
+        // StopAllCoroutines();
+        // if(isThrowing)
+        //     transform.position = startPos;
+        if (!isThrowing)
+        {
+            isThrowing = true;
+            yield return StartCoroutine(FlyToTarget(transform, tarpos));
+        }
     }
 
     IEnumerator FlyToTarget(Transform ball, Vector3 tarPos)
     {
+        Vector3 throwStartPos = ball.position;
         float startTime = Time.time;
-        Vector3 flyVec = tarPos - startPos;
+        Vector3 flyVec = tarPos - throwStartPos;
         while (Time.time - startTime < flyDuration)
         {
-            ball.position = startPos + (Time.time - startTime) / flyDuration * flyVec;
+            ball.position = throwStartPos + (Time.time - startTime) / flyDuration * flyVec;
             yield return 0;
         }
-        StartCoroutine(ReturnToStartPos(ball));
     }
 
-    IEnumerator ReturnToStartPos(Transform ball)
+    public IEnumerator GoalToHoop(Vector3 hoopPos, Vector3 groundPos)
     {
-        yield return new WaitForSeconds(returnDelay);
-        ball.position = startPos;
+        Vector3 startPos = transform.position;
+        Vector3 controlPoint = (startPos + hoopPos) / 2 + (startPos - hoopPos).magnitude * 0.8f * Vector3.up;
+        float startTime = Time.time;
+        while (Time.time - startTime < goalToHoopDuration)
+        {
+            transform.position = CalculateBezierPoint((Time.time - startTime) / goalToHoopDuration, startPos, controlPoint, hoopPos);
+            yield return 0;
+        }
+    }
+
+    public IEnumerator GoalToGround(Vector3 hoopPos, Vector3 groundPos)
+    {
+        float startTime = Time.time;
+        Vector3 flyVec = groundPos - hoopPos;
+        while (Time.time - startTime < goalToGroundDuration)
+        {
+            transform.position = hoopPos + (Time.time - startTime) / goalToGroundDuration * flyVec;
+            yield return 0;
+        }
+    }
+
+    public void ReturnToStartPos()
+    {
+        transform.localScale = new Vector3(1, 1, 1);
+        Vector2 ballStartScreenPos = Camera.main.WorldToScreenPoint(startPos);
+        Vector2 mousePos = Mouse.current.position.ReadValue();
+        transform.position = startPos + (Vector3)(mousePos - ballStartScreenPos) * followScaling;
+        isThrowing = false;
+    }
+
+    public IEnumerator Fade()
+    {
+        float startScale = 1f, endScale = 0f;
+        float startTime = Time.time;
+        while (Time.time - startTime < fadeDuration)
+        {
+            transform.localScale = Vector3.one * Mathf.Lerp(startScale, endScale, (Time.time - startTime) / fadeDuration);
+            yield return 0;
+        }
+    }
+
+    public IEnumerator HitReferee(Vector3 groundPos)
+    {
+        Vector3 startPos = transform.position;
+        float startTime = Time.time;
+        Vector3 flyVec = Vector3.down * (startPos.y - groundPos.y);
+        float duration = (startPos.y - groundPos.y) / hitRefereeToGroundSpeed;
+        while (Time.time - startTime < duration)
+        {
+            transform.position = startPos + (Time.time - startTime) / duration * flyVec;
+            yield return 0;
+        }
+    }
+
+    public IEnumerator KnockedAway()
+    {
+        float startTime = Time.time;
+        knockedDir.Normalize();
+        while (Time.time - startTime < knockedAwayDuration)
+        {
+            transform.position = transform.position + (Vector3)(knockedAwaySpeed * knockedDir);
+            yield return 0;
+        }
+    }
+
+    Vector3 CalculateBezierPoint(float t, Vector3 p0, Vector3 p1, Vector3 p2)
+    {
+        // Applying the quadratic Bezier formula
+        return Mathf.Pow(1 - t, 2) * p0 + 2 * (1 - t) * t * p1 + Mathf.Pow(t, 2) * p2;
     }
 }
