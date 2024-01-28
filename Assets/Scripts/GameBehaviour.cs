@@ -6,12 +6,14 @@ using UnityEngine.SceneManagement;
 public class GameBehaviour : MonoBehaviour
 {
     public static GameBehaviour Instance;
+    [SerializeField] Animator transitionAnim;
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         } else if (Instance != this)
         {
             Destroy(gameObject);
@@ -20,7 +22,8 @@ public class GameBehaviour : MonoBehaviour
 
     public void SceneToMoveTo()
     {
-        SceneManager.LoadScene("SampleScene");
+        StartCoroutine(LoadLevel());
+        //SceneManager.LoadScene("SampleScene");
     }
 
     public void ExitGame()
@@ -32,5 +35,13 @@ public class GameBehaviour : MonoBehaviour
     {
         //TODO: pop up options on a menu
         return;
+    }
+
+    IEnumerator LoadLevel()
+    {
+        transitionAnim.SetTrigger("LevelEnd");
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("SampleScene");
+        transitionAnim.SetTrigger("LevelStart");
     }
 }
