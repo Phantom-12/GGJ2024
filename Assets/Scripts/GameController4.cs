@@ -104,7 +104,7 @@ public class GameController4 : MonoBehaviour
         PlayAudio(eat);
         cake.gameObject.SetActive(false);
 
-        // yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1);
         // cake.ReturnToStartPos();
         // isPlaying = false;
         yingtao.SetActive(true);
@@ -146,7 +146,7 @@ public class GameController4 : MonoBehaviour
         cakePart4.SetActive(true);
         yield return StartCoroutine(square.Sword());
 
-        // yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1);
         // cakePart1.SetActive(false);
         // cakePart2.SetActive(false);
         // cakePart3.SetActive(false);
@@ -177,7 +177,7 @@ public class GameController4 : MonoBehaviour
         bigCakeEnd.SetActive(true);
         darkness.SetActive(false);
 
-        // yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1);
         // candle.SetActive(false);
         // cherry.SetActive(false);
         // bigCakeEnd.SetActive(false);

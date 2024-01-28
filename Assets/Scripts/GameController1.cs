@@ -33,7 +33,6 @@ public class GameController1 : MonoBehaviour
 
     void Start()
     {
-
         UIRetry.SetActive(false);
         UINextScene.SetActive(false);
         toudi.SetActive(false);
@@ -123,7 +122,7 @@ public class GameController1 : MonoBehaviour
         yield return StartCoroutine(ball.GoalToGround(hoopPos.position,goalGroundPos.position));
         hoopSpriteRenderer.sortingOrder=10;
 
-        // yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1);
         // player.Init();
         // ball.ReturnToStartPos();
         // isPlaying=false;
@@ -150,7 +149,7 @@ public class GameController1 : MonoBehaviour
         yield return StartCoroutine(ball.Throw(tarpos));
         PlayAudio(whistling);
         yield return StartCoroutine(ball.HitReferee(hitRefereeGroundPos.position));
-        // yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1);
         // ball.ReturnToStartPos();
         // isPlaying=false;
         quzhu.SetActive(true);
@@ -173,7 +172,7 @@ public class GameController1 : MonoBehaviour
         PlayAudio(undressing);
         StopCoroutine(temp);
         
-        // yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1);
         // ball.ReturnToStartPos();
         // referee.Init();
         // isPlaying=false;
