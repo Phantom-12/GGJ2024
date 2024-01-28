@@ -1613,7 +1613,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1260693326
@@ -2282,6 +2282,11 @@ MonoBehaviour:
   hoopPos: {fileID: 0}
   goalGroundPos: {fileID: 0}
   hitRefereeGroundPos: {fileID: 0}
+  UIRetry: {fileID: 0}
+  UINextScene: {fileID: 0}
+  toudi: {fileID: 0}
+  wulong: {fileID: 0}
+  quzhu: {fileID: 0}
   audioSource: {fileID: 1456178468}
   knockBall: {fileID: 8300000, guid: c1833d06a2e7cd04cb8d82b32da6a326, type: 3}
   whistling: {fileID: 8300000, guid: 7d7f53799f1f3ed4181e89149f073f78, type: 3}
@@ -2655,19 +2660,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1794198746
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1794198745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9972a27a70ce5740a86d95d54559bd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transitionAnim: {fileID: 1964698029}
 --- !u!4 &1794198747
 Transform:
   m_ObjectHideFlags: 0
