@@ -386,7 +386,7 @@ SpriteRenderer:
   m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &198344370
@@ -497,7 +497,7 @@ GameObject:
   m_Component:
   - component: {fileID: 255758242}
   - component: {fileID: 255758241}
-  - component: {fileID: 255758240}
+  - component: {fileID: 255758243}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -505,26 +505,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &255758240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 255758239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!114 &255758241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,6 +535,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &255758243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255758239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
 --- !u!1 &275629744
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,7 +646,7 @@ SpriteRenderer:
   m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &379690344
@@ -893,7 +903,7 @@ SpriteRenderer:
   m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &624847140
@@ -1006,7 +1016,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 704237800}
-  - component: {fileID: 704237799}
+  - component: {fileID: 704237801}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1014,19 +1024,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &704237799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 704237798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f473e523584a975459d8f1b39906b9aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transitionAnim: {fileID: 1964698029}
 --- !u!4 &704237800
 Transform:
   m_ObjectHideFlags: 0
@@ -1044,6 +1041,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &704237801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704237798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9972a27a70ce5740a86d95d54559bd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transitionAnim: {fileID: 1964698029}
 --- !u!1 &856636265
 GameObject:
   m_ObjectHideFlags: 0
@@ -1813,7 +1823,7 @@ SpriteRenderer:
   m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1266467061
@@ -1944,7 +1954,7 @@ SpriteRenderer:
   m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1332561904
@@ -2494,6 +2504,11 @@ MonoBehaviour:
   hoopPos: {fileID: 0}
   goalGroundPos: {fileID: 0}
   hitRefereeGroundPos: {fileID: 0}
+  UIRetry: {fileID: 0}
+  UINextScene: {fileID: 0}
+  toudi: {fileID: 0}
+  wulong: {fileID: 0}
+  quzhu: {fileID: 0}
   audioSource: {fileID: 1456178468}
   knockBall: {fileID: 8300000, guid: c1833d06a2e7cd04cb8d82b32da6a326, type: 3}
   whistling: {fileID: 8300000, guid: 7d7f53799f1f3ed4181e89149f073f78, type: 3}
@@ -2501,6 +2516,7 @@ MonoBehaviour:
   hurt: {fileID: 8300000, guid: b282a43b784996e41a18557ed8b9cdcc, type: 3}
   undressing: {fileID: 8300000, guid: 546baf5a5a71e2942b7db2820e727ded, type: 3}
   goal: {fileID: 8300000, guid: f375b1fc71b3869458a94b5eff3d784a, type: 3}
+  throwing: {fileID: 0}
 --- !u!4 &1456178472
 Transform:
   m_ObjectHideFlags: 0
@@ -3018,7 +3034,7 @@ SpriteRenderer:
   m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1896826622
@@ -3186,7 +3202,7 @@ SpriteRenderer:
   m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1959724218

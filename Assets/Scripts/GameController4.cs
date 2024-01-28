@@ -13,6 +13,15 @@ public class GameController4 : MonoBehaviour
     GameObject cakePart1,cakePart2,cakePart3,cakePart4;
     [SerializeField]
     GameObject candle,cherry;
+    [SerializeField]
+    GameObject bigCakeEnd;
+    [SerializeField]
+    ParticleSystem slash;
+
+    [SerializeField]
+    GameObject UIRetry,UINextScene;
+    [SerializeField]
+    GameObject yingtao,gaoshou,baotou;
 
     [SerializeField]
     Cake cake;    
@@ -40,6 +49,13 @@ public class GameController4 : MonoBehaviour
         cakePart4.SetActive(false);
         candle.SetActive(false);
         cherry.SetActive(false);
+        slash.gameObject.SetActive(false);
+        bigCakeEnd.SetActive(false);
+        UIRetry.SetActive(false);
+        UINextScene.SetActive(false);
+        yingtao.SetActive(false);
+        gaoshou.SetActive(false);
+        baotou.SetActive(false);
     }
 
     public void ThrowInputHandler(InputAction.CallbackContext callback)
@@ -88,9 +104,11 @@ public class GameController4 : MonoBehaviour
         PlayAudio(eat);
         cake.gameObject.SetActive(false);
 
-        yield return new WaitForSeconds(1);
-        cake.ReturnToStartPos();
-        isPlaying = false;
+        // yield return new WaitForSeconds(1);
+        // cake.ReturnToStartPos();
+        // isPlaying = false;
+        yingtao.SetActive(true);
+        UIRetry.SetActive(true);
     }
 
     IEnumerator HitCircle(Vector3 tarpos)
@@ -115,27 +133,28 @@ public class GameController4 : MonoBehaviour
         PlayAudio(throwing);
         yield return StartCoroutine(cake.Throw(tarpos));
 
-        darkness.SetActive(true);
         cake.gameObject.SetActive(false);
         PlayAudio(turnoff);
-        //TODO:刀剑特效
+        slash.gameObject.SetActive(true);
+        slash.Play();
         PlayAudio(blade);
         yield return new WaitForSeconds(1);
 
-        darkness.SetActive(false);
         cakePart1.SetActive(true);
         cakePart2.SetActive(true);
         cakePart3.SetActive(true);
         cakePart4.SetActive(true);
         yield return StartCoroutine(square.Sword());
 
-        yield return new WaitForSeconds(1);
-        cakePart1.SetActive(false);
-        cakePart2.SetActive(false);
-        cakePart3.SetActive(false);
-        cakePart4.SetActive(false);
-        cake.ReturnToStartPos();
-        isPlaying = false;
+        // yield return new WaitForSeconds(1);
+        // cakePart1.SetActive(false);
+        // cakePart2.SetActive(false);
+        // cakePart3.SetActive(false);
+        // cakePart4.SetActive(false);
+        // cake.ReturnToStartPos();
+        // isPlaying = false;
+        gaoshou.SetActive(true);
+        UIRetry.SetActive(true);
     }
 
     IEnumerator HitBigCake(Vector3 tarpos)
@@ -155,14 +174,19 @@ public class GameController4 : MonoBehaviour
         cake.gameObject.SetActive(false);
         candle.SetActive(true);
         cherry.SetActive(true);
+        bigCakeEnd.SetActive(true);
         darkness.SetActive(false);
 
-        yield return new WaitForSeconds(1);
-        candle.SetActive(false);
-        cherry.SetActive(false);
-        bigCake.Init();
-        cake.ReturnToStartPos();
-        isPlaying = false;
+        // yield return new WaitForSeconds(1);
+        // candle.SetActive(false);
+        // cherry.SetActive(false);
+        // bigCakeEnd.SetActive(false);
+        // bigCake.Init();
+        // cake.ReturnToStartPos();
+        // isPlaying = false;
+        baotou.SetActive(true);
+        UINextScene.SetActive(true);
+
     }
 
     void PlayAudio(AudioClip audioClip)

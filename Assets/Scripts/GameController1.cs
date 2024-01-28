@@ -20,11 +20,26 @@ public class GameController1 : MonoBehaviour
     Transform hitRefereeGroundPos;
 
     [SerializeField]
+    GameObject UIRetry,UINextScene;
+    [SerializeField]
+    GameObject toudi,wulong,quzhu;
+
+    [SerializeField]
     AudioSource audioSource;
     [SerializeField]
     AudioClip knockBall,whistling,boos,hurt,undressing,goal,throwing;
 
     bool isPlaying;
+
+    void Start()
+    {
+
+        UIRetry.SetActive(false);
+        UINextScene.SetActive(false);
+        toudi.SetActive(false);
+        wulong.SetActive(false);
+        quzhu.SetActive(false);
+    }
 
 
     public void ThrowInputHandler(InputAction.CallbackContext callback)
@@ -108,10 +123,12 @@ public class GameController1 : MonoBehaviour
         yield return StartCoroutine(ball.GoalToGround(hoopPos.position,goalGroundPos.position));
         hoopSpriteRenderer.sortingOrder=10;
 
-        yield return new WaitForSeconds(1);
-        player.Init();
-        ball.ReturnToStartPos();
-        isPlaying=false;
+        // yield return new WaitForSeconds(1);
+        // player.Init();
+        // ball.ReturnToStartPos();
+        // isPlaying=false;
+        wulong.SetActive(true);
+        UINextScene.SetActive(true);
     }
     
     IEnumerator HitAudience(Vector3 tarpos)
@@ -133,9 +150,11 @@ public class GameController1 : MonoBehaviour
         yield return StartCoroutine(ball.Throw(tarpos));
         PlayAudio(whistling);
         yield return StartCoroutine(ball.HitReferee(hitRefereeGroundPos.position));
-        yield return new WaitForSeconds(1);
-        ball.ReturnToStartPos();
-        isPlaying=false;
+        // yield return new WaitForSeconds(1);
+        // ball.ReturnToStartPos();
+        // isPlaying=false;
+        quzhu.SetActive(true);
+        UIRetry.SetActive(true);
     }
     
     IEnumerator HitHoop(Vector3 tarpos)
@@ -154,10 +173,12 @@ public class GameController1 : MonoBehaviour
         PlayAudio(undressing);
         StopCoroutine(temp);
         
-        yield return new WaitForSeconds(1);
-        ball.ReturnToStartPos();
-        referee.Init();
-        isPlaying=false;
+        // yield return new WaitForSeconds(1);
+        // ball.ReturnToStartPos();
+        // referee.Init();
+        // isPlaying=false;
+        toudi.SetActive(true);
+        UIRetry.SetActive(true);
     }
 
     IEnumerator HitStartButton(Vector3 tarpos)
@@ -190,7 +211,7 @@ public class GameController1 : MonoBehaviour
         ball.PlayHitEffect();
         yield return new WaitForSeconds(0.5f);
         isPlaying = false;
-        GameBehaviour.Instance.SceneToMoveTo("SampleScene");
+        GameBehaviour.Instance.SceneToMoveTo("Scene1");
     }
 
     IEnumerator HitLevelTwoButton(Vector3 tarpos)
@@ -201,7 +222,7 @@ public class GameController1 : MonoBehaviour
         ball.PlayHitEffect();
         yield return new WaitForSeconds(0.5f);
         isPlaying = false;
-        GameBehaviour.Instance.SceneToMoveTo("LevelTwo");
+        GameBehaviour.Instance.SceneToMoveTo("Scene4");
     }
 
     IEnumerator HitBackButton(Vector3 tarpos)
