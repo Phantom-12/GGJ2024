@@ -22,7 +22,7 @@ public class GameController1 : MonoBehaviour
     [SerializeField]
     AudioSource audioSource;
     [SerializeField]
-    AudioClip knockBall,whistling,boos,hurt,undressing,goal;
+    AudioClip knockBall,whistling,boos,hurt,undressing,goal,throwing;
 
     bool isPlaying;
 
@@ -69,6 +69,7 @@ public class GameController1 : MonoBehaviour
     IEnumerator HitGround(Vector3 tarpos)
     {
         isPlaying=true;
+        PlayAudio(throwing);
         yield return StartCoroutine(ball.Throw(tarpos));
         yield return new WaitForSeconds(1);
         ball.ReturnToStartPos();
@@ -78,6 +79,7 @@ public class GameController1 : MonoBehaviour
     IEnumerator HitPlayerFace(Vector3 tarpos)
     {
         isPlaying=true;
+        PlayAudio(throwing);
         yield return StartCoroutine(ball.Throw(tarpos));
 
         hoopSpriteRenderer.sortingOrder=30;
@@ -97,6 +99,7 @@ public class GameController1 : MonoBehaviour
     IEnumerator HitAudience(Vector3 tarpos)
     {
         isPlaying=true;
+        PlayAudio(throwing);
         yield return StartCoroutine(ball.Throw(tarpos));
         PlayAudio(boos);
         yield return StartCoroutine(ball.Fade());
@@ -108,6 +111,7 @@ public class GameController1 : MonoBehaviour
     IEnumerator HitReferee(Vector3 tarpos)
     {
         isPlaying=true;
+        PlayAudio(throwing);
         yield return StartCoroutine(ball.Throw(tarpos));
         PlayAudio(whistling);
         yield return StartCoroutine(ball.HitReferee(hitRefereeGroundPos.position));
@@ -119,6 +123,7 @@ public class GameController1 : MonoBehaviour
     IEnumerator HitHoop(Vector3 tarpos)
     {
         isPlaying=true;
+        PlayAudio(throwing);
         StartCoroutine(ball.Throw(tarpos));
         yield return new WaitForSeconds(0.2f);
         yield return StartCoroutine(referee.FlyToBall(tarpos));
