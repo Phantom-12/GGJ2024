@@ -8,7 +8,7 @@ public class BallHit : MonoBehaviour
     {
         if(collision.gameObject.tag == "StartTag")
         {
-            GameBehaviour.Instance.SceneToMoveTo();
+            GameBehaviour.Instance.SceneToMoveTo("LevelSelect");
         }
         else if (collision.gameObject.tag == "ExitTag")
         {

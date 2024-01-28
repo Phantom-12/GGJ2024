@@ -8,6 +8,8 @@ public class GameBehaviour : MonoBehaviour
     public static GameBehaviour Instance;
     [SerializeField] Animator transitionAnim;
 
+    private string sceneName;
+
     private void Awake()
     {
         if (Instance == null)
@@ -20,9 +22,9 @@ public class GameBehaviour : MonoBehaviour
         }
     }
 
-    public void SceneToMoveTo()
+    public void SceneToMoveTo(string sceneName)
     {
-        StartCoroutine(LoadLevel());
+        StartCoroutine(LoadLevel(sceneName));
         //SceneManager.LoadScene("SampleScene");
     }
 
@@ -37,11 +39,12 @@ public class GameBehaviour : MonoBehaviour
         return;
     }
 
-    IEnumerator LoadLevel()
+    IEnumerator LoadLevel(string sceneName)
     {
         transitionAnim.SetTrigger("LevelEnd");
         yield return new WaitForSeconds(2);
-        SceneManager.LoadScene("SampleScene");
+        //SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(sceneName);
         transitionAnim.SetTrigger("LevelStart");
     }
 }

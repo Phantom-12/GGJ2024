@@ -65,6 +65,18 @@ public class GameController1 : MonoBehaviour
                     case "ExitObj":
                         StartCoroutine(HitExitButton(raycastHit.point));
                         break;
+                    case "LevelOneObj":
+                        StartCoroutine(HitLevelOneButton(raycastHit.point));
+                        break;
+                    case "LevelTwoObj":
+                        StartCoroutine(HitLevelTwoButton(raycastHit.point));
+                        break;
+                    case "LockedObj":
+                        StartCoroutine(HitLockedLevelButton(raycastHit.point));
+                        break;
+                    case "BackObj":
+                        StartCoroutine(HitBackButton(raycastHit.point));
+                        break;
                 }
             }
             // Debug.DrawRay(ray.origin,ray.direction,Color.red,100);
@@ -156,7 +168,7 @@ public class GameController1 : MonoBehaviour
         ball.PlayHitEffect();
         yield return new WaitForSeconds(0.5f);
         isPlaying = false;
-        GameBehaviour.Instance.SceneToMoveTo();
+        GameBehaviour.Instance.SceneToMoveTo("LevelSelect");
     }
 
     IEnumerator HitExitButton(Vector3 tarpos)
@@ -168,6 +180,50 @@ public class GameController1 : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         isPlaying = false;
         GameBehaviour.Instance.ExitGame();
+    }
+
+    IEnumerator HitLevelOneButton(Vector3 tarpos)
+    {
+        isPlaying = true;
+        yield return StartCoroutine(ball.Throw(tarpos));
+        //PlayAudio(whistling);
+        ball.PlayHitEffect();
+        yield return new WaitForSeconds(0.5f);
+        isPlaying = false;
+        GameBehaviour.Instance.SceneToMoveTo("SampleScene");
+    }
+
+    IEnumerator HitLevelTwoButton(Vector3 tarpos)
+    {
+        isPlaying = true;
+        yield return StartCoroutine(ball.Throw(tarpos));
+        //PlayAudio(whistling);
+        ball.PlayHitEffect();
+        yield return new WaitForSeconds(0.5f);
+        isPlaying = false;
+        GameBehaviour.Instance.SceneToMoveTo("LevelTwo");
+    }
+
+    IEnumerator HitBackButton(Vector3 tarpos)
+    {
+        isPlaying = true;
+        yield return StartCoroutine(ball.Throw(tarpos));
+        //PlayAudio(whistling);
+        ball.PlayHitEffect();
+        yield return new WaitForSeconds(0.5f);
+        isPlaying = false;
+        GameBehaviour.Instance.SceneToMoveTo("Menu");
+    }
+
+    IEnumerator HitLockedLevelButton(Vector3 tarpos)
+    {
+        isPlaying = true;
+        yield return StartCoroutine(ball.Throw(tarpos));
+        //PlayAudio(whistling);
+        ball.PlayHitEffect();
+        yield return new WaitForSeconds(0.5f);
+        ball.ReturnToStartPos();
+        isPlaying = false;
     }
 
     void PlayAudio(AudioClip audioClip)
