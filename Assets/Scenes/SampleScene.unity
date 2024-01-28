@@ -1378,7 +1378,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1191022412}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f473e523584a975459d8f1b39906b9aa, type: 3}
+  m_Script: {fileID: 11500000, guid: d9972a27a70ce5740a86d95d54559bd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transitionAnim: {fileID: 1386869285}

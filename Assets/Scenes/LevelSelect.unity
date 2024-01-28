@@ -1605,8 +1605,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 20
-  m_Sprite: {fileID: 21300000, guid: 3ef6ebbfde7da5e4cbe2ab0b8c8b0bbf, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 0307ad64c9b594b98a086a0a2eb6f5b8, type: 3}
+  m_Color: {r: 1, g: 0.39215687, b: 0.29411766, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2289,6 +2289,7 @@ MonoBehaviour:
   hurt: {fileID: 8300000, guid: b282a43b784996e41a18557ed8b9cdcc, type: 3}
   undressing: {fileID: 8300000, guid: 546baf5a5a71e2942b7db2820e727ded, type: 3}
   goal: {fileID: 8300000, guid: f375b1fc71b3869458a94b5eff3d784a, type: 3}
+  throwing: {fileID: 0}
 --- !u!4 &1456178472
 Transform:
   m_ObjectHideFlags: 0
@@ -2663,7 +2664,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1794198745}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f473e523584a975459d8f1b39906b9aa, type: 3}
+  m_Script: {fileID: 11500000, guid: d9972a27a70ce5740a86d95d54559bd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transitionAnim: {fileID: 1964698029}
