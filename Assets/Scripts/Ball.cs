@@ -7,6 +7,7 @@ public class Ball : MonoBehaviour
 {
     bool isThrowing;
     Vector3 startPos;
+
     [SerializeField]
     float followScaling;
     [SerializeField]
@@ -22,10 +23,22 @@ public class Ball : MonoBehaviour
     [SerializeField]
     float knockedAwayDuration, knockedAwaySpeed;
 
+    public ParticleSystem hitEffect;
+
     void Awake()
     {
         isThrowing = false;
         startPos = transform.position;
+    }
+
+    void Start()
+    {
+        hitEffect = GetComponentInChildren<ParticleSystem>(true); // true to include inactive children
+        if (hitEffect == null)
+        {
+            Debug.LogError("No Particle System found as a child of the ball. Please attach one.");
+        }
+        hitEffect.Stop();
     }
 
     void Update()
@@ -133,5 +146,18 @@ public class Ball : MonoBehaviour
     {
         // Applying the quadratic Bezier formula
         return Mathf.Pow(1 - t, 2) * p0 + 2 * (1 - t) * t * p1 + Mathf.Pow(t, 2) * p2;
+    }
+
+    public void PlayHitEffect()
+    {
+        if (hitEffect != null)
+        {
+            //hitEffect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear); // Stop any existing effects and clear them
+            hitEffect.Play(); // Play the effect
+        }
+        else
+        {
+            Debug.LogError("Hit effect is not assigned or found!");
+        }
     }
 }
