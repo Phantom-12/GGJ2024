@@ -2303,7 +2303,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8acaafa4b6d213c4e906f7d483c76816, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 528859b634783b64594eb0bb61463ce2, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2495,12 +2495,12 @@ MonoBehaviour:
   goalGroundPos: {fileID: 0}
   hitRefereeGroundPos: {fileID: 0}
   audioSource: {fileID: 1456178468}
-  knockBall: {fileID: 8300000, guid: c1833d06a2e7cd04cb8d82b32da6a326, type: 3}
-  whistling: {fileID: 8300000, guid: 7d7f53799f1f3ed4181e89149f073f78, type: 3}
-  boos: {fileID: 8300000, guid: 7df41cc9c37861c4eabae9f18115c1ff, type: 3}
-  hurt: {fileID: 8300000, guid: b282a43b784996e41a18557ed8b9cdcc, type: 3}
-  undressing: {fileID: 8300000, guid: 546baf5a5a71e2942b7db2820e727ded, type: 3}
-  goal: {fileID: 8300000, guid: f375b1fc71b3869458a94b5eff3d784a, type: 3}
+  knockBall: {fileID: 0}
+  whistling: {fileID: 0}
+  boos: {fileID: 0}
+  hurt: {fileID: 0}
+  undressing: {fileID: 0}
+  goal: {fileID: 0}
   throwing: {fileID: 0}
 --- !u!4 &1456178472
 Transform:
