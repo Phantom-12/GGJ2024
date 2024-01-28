@@ -149,7 +149,7 @@ public class GameController1 : MonoBehaviour
         yield return StartCoroutine(ball.Throw(tarpos));
         //PlayAudio(whistling);
         ball.PlayHitEffect();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         isPlaying = false;
         GameBehaviour.Instance.SceneToMoveTo();
     }
@@ -160,7 +160,7 @@ public class GameController1 : MonoBehaviour
         yield return StartCoroutine(ball.Throw(tarpos));
         //PlayAudio(whistling);
         ball.PlayHitEffect();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         isPlaying = false;
         GameBehaviour.Instance.ExitGame();
     }

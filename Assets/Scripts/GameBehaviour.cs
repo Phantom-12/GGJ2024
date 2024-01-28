@@ -40,7 +40,7 @@ public class GameBehaviour : MonoBehaviour
     IEnumerator LoadLevel()
     {
         transitionAnim.SetTrigger("LevelEnd");
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         SceneManager.LoadScene("SampleScene");
         transitionAnim.SetTrigger("LevelStart");
     }
