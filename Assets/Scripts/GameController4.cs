@@ -97,11 +97,11 @@ public class GameController4 : MonoBehaviour
     IEnumerator HitTriangle(Vector3 tarpos)
     {
         isPlaying = true;
-        PlayAudio(throwing);
+        audioSource.PlayOneShot(throwing);
         yield return StartCoroutine(cake.Throw(tarpos));
 
         yield return StartCoroutine(triangle.Eat());
-        PlayAudio(eat);
+        audioSource.PlayOneShot(eat);
         cake.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(1);
@@ -114,11 +114,11 @@ public class GameController4 : MonoBehaviour
     IEnumerator HitCircle(Vector3 tarpos)
     {
         isPlaying = true;
-        PlayAudio(throwing);
+        audioSource.PlayOneShot(throwing);
         yield return StartCoroutine(cake.Throw(tarpos));
 
         circle.RandomMove();
-        PlayAudio(dodge);
+        audioSource.PlayOneShot(dodge);
         yield return new WaitForSeconds(0.5f);
         circle.ReturnToStartPos();
 
@@ -130,14 +130,14 @@ public class GameController4 : MonoBehaviour
     IEnumerator HitSquare(Vector3 tarpos)
     {
         isPlaying = true;
-        PlayAudio(throwing);
+        audioSource.PlayOneShot(throwing);
         yield return StartCoroutine(cake.Throw(tarpos));
 
         cake.gameObject.SetActive(false);
-        PlayAudio(turnoff);
+        audioSource.PlayOneShot(turnoff);
         slash.gameObject.SetActive(true);
         slash.Play();
-        PlayAudio(blade);
+        audioSource.PlayOneShot(blade);
         yield return new WaitForSeconds(1);
 
         cakePart1.SetActive(true);
@@ -160,16 +160,16 @@ public class GameController4 : MonoBehaviour
     IEnumerator HitBigCake(Vector3 tarpos)
     {
         isPlaying = true;
-        PlayAudio(throwing);
+        audioSource.PlayOneShot(throwing);
         yield return StartCoroutine(cake.Throw(tarpos));
 
         bigCake.LightOff();
         yield return new WaitForSeconds(0.5f);
         darkness.SetActive(true);
         yield return new WaitForSeconds(0.5f);
-        PlayAudio(tom);
+        audioSource.PlayOneShot(tom);
         yield return new WaitForSeconds(2.5f);
-        PlayAudio(turnoff);
+        audioSource.PlayOneShot(turnoff);
         bigCake.gameObject.SetActive(false);
         cake.gameObject.SetActive(false);
         candle.SetActive(true);
@@ -189,9 +189,9 @@ public class GameController4 : MonoBehaviour
 
     }
 
-    void PlayAudio(AudioClip audioClip)
-    {
-        audioSource.clip = audioClip;
-        audioSource.Play();
-    }
+    // void PlayAudio(AudioClip audioClip)
+    // {
+    //     audioSource.clip = audioClip;
+    //     audioSource.Play();
+    // }
 }
