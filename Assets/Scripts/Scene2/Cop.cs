@@ -13,8 +13,8 @@ public class Cop : MonoBehaviour
         float startTime = Time.time;
         Vector3 moveVec = Vector3.right * (trashPos.x - startPos.x);
         float duration = (trashPos.x - startPos.x) / moveSpeed;
-        Debug.Log(moveVec);
-        Debug.Log(duration);
+        // Debug.Log(moveVec);
+        // Debug.Log(duration);
         while (Time.time - startTime < duration)
         {
             transform.position = startPos + (Time.time - startTime) / duration * moveVec;

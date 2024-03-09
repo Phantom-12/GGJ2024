@@ -26,20 +26,20 @@ public class GameController2 : MonoBehaviour
     [SerializeField]
     GameObject UIRetry, UINextScene;
     [SerializeField]
-    GameObject yingtao, gaoshou, baotou;
+    GameObject gai, gongde, laji;
 
     [SerializeField]
     AudioSource audioSource;
     [SerializeField]
-    AudioClip throwing, eat, dodge, turnoff, tom, blade;
+    AudioClip trueEnding, badEnding, throwing, gaiban, dishang, jingcha, polie;
 
     void Start()
     {
         UIRetry.SetActive(false);
         UINextScene.SetActive(false);
-        yingtao.SetActive(false);
-        gaoshou.SetActive(false);
-        baotou.SetActive(false);
+        gai.SetActive(false);
+        gongde.SetActive(false);
+        laji.SetActive(false);
     }
 
     public void ThrowInputHandler(InputAction.CallbackContext callback)
@@ -77,17 +77,17 @@ public class GameController2 : MonoBehaviour
             // Debug.Log(ray);
         }
     }
-    
+
     IEnumerator HitNothing(Vector3 tarpos)
     {
-        isPlaying=true;
+        isPlaying = true;
         audioSource.PlayOneShot(throwing);
         yield return StartCoroutine(trash.Throw(tarpos));
 
         yield return StartCoroutine(trash.Fade());
         yield return new WaitForSeconds(1);
         trash.ReturnToStartPos();
-        isPlaying=false;
+        isPlaying = false;
     }
 
     IEnumerator HitCover(Vector3 tarpos)
@@ -96,12 +96,14 @@ public class GameController2 : MonoBehaviour
         audioSource.PlayOneShot(throwing);
         yield return StartCoroutine(trash.Throw(tarpos));
 
+        audioSource.PlayOneShot(gaiban);
         StartCoroutine(cover.CloseTheCover());
         yield return StartCoroutine(trash.CoverToGround(coverGroundPoint.position));
 
         yield return new WaitForSeconds(1);
 
-        yingtao.SetActive(true);
+        gai.SetActive(true);
+        audioSource.PlayOneShot(badEnding);
         UIRetry.SetActive(true);
     }
 
@@ -110,11 +112,13 @@ public class GameController2 : MonoBehaviour
         isPlaying = true;
         audioSource.PlayOneShot(throwing);
         yield return StartCoroutine(trash.Throw(tarpos));
+        audioSource.PlayOneShot(dishang);
         yield return StartCoroutine(cop.ToTrash(tarpos));
 
         yield return new WaitForSeconds(1);
 
-        yingtao.SetActive(true);
+        gongde.SetActive(true);
+        audioSource.PlayOneShot(badEnding);
         UIRetry.SetActive(true);
 
         // trash.ReturnToStartPos();
@@ -129,11 +133,13 @@ public class GameController2 : MonoBehaviour
 
         StartCoroutine(trash.Fade());
         yield return StartCoroutine(plane.ToBin(planeBinPoint.position));
+        audioSource.PlayOneShot(polie);
 
         yield return new WaitForSeconds(1);
 
-        yingtao.SetActive(true);
-        UIRetry.SetActive(true);
+        laji.SetActive(true);
+        audioSource.PlayOneShot(trueEnding);
+        UINextScene.SetActive(true);
 
         // trash.ReturnToStartPos();
         // isPlaying = false;

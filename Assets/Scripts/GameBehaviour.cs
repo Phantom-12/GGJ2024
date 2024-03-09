@@ -7,6 +7,7 @@ public class GameBehaviour : MonoBehaviour
 {
     public static GameBehaviour Instance;
     [SerializeField] Animator transitionAnim;
+    [SerializeField] GameObject volumeControlUI;
 
     private string sceneName;
 
@@ -35,7 +36,7 @@ public class GameBehaviour : MonoBehaviour
 
     public void OptionSelection()
     {
-        //TODO: pop up options on a menu
+        volumeControlUI.SetActive(true);
         return;
     }
 

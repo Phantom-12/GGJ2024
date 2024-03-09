@@ -216,7 +216,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: LevelSelect
+          m_StringArgument: Scene2
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &65590363
@@ -510,7 +510,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &340399499
 MonoBehaviour:
@@ -607,7 +607,7 @@ AudioSource:
   m_GameObject: {fileID: 340399496}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -8845455384887099115, guid: caa1681a8fad0604faddd69f17af5c7b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -703,8 +703,8 @@ AudioSource:
   m_GameObject: {fileID: 340399496}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 528859b634783b64594eb0bb61463ce2, type: 3}
+  OutputAudioMixerGroup: {fileID: -8105543076187875540, guid: caa1681a8fad0604faddd69f17af5c7b, type: 2}
+  m_audioClip: {fileID: 8300000, guid: fc2467127f2f3bc48833ca99d84c5e7d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -822,6 +822,8 @@ MonoBehaviour:
   bigCake: {fileID: 1211671731}
   darkness: {fileID: 828647134}
   audioSource: {fileID: 340399500}
+  trueEnding: {fileID: 8300000, guid: a83c8250b8833b44299e57ce6b7251fb, type: 3}
+  badEnding: {fileID: 8300000, guid: 3a436b8686cd3cb47a7ca6552b93f429, type: 3}
   throwing: {fileID: 8300000, guid: da6a53de8c155fd43a3f1e4421798853, type: 3}
   eat: {fileID: 8300000, guid: 745fd7814ef199d46a43a8d436315765, type: 3}
   dodge: {fileID: 8300000, guid: 2949b15c46c1dca479ec3a8d44d8d6d4, type: 3}
@@ -2110,7 +2112,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!224 &967454034
 RectTransform:
@@ -3259,7 +3261,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!1001 &1777733535
 PrefabInstance:
@@ -3590,7 +3592,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!1 &2117596680
 GameObject:

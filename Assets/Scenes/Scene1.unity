@@ -222,7 +222,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!1 &340399496
 GameObject:
@@ -284,6 +284,8 @@ MonoBehaviour:
   wulong: {fileID: 1864031038}
   quzhu: {fileID: 1651330134}
   audioSource: {fileID: 340399500}
+  trueEnding: {fileID: 8300000, guid: a83c8250b8833b44299e57ce6b7251fb, type: 3}
+  badEnding: {fileID: 8300000, guid: 3a436b8686cd3cb47a7ca6552b93f429, type: 3}
   knockBall: {fileID: 8300000, guid: c1833d06a2e7cd04cb8d82b32da6a326, type: 3}
   whistling: {fileID: 8300000, guid: 7d7f53799f1f3ed4181e89149f073f78, type: 3}
   boos: {fileID: 8300000, guid: 7df41cc9c37861c4eabae9f18115c1ff, type: 3}
@@ -386,7 +388,7 @@ AudioSource:
   m_GameObject: {fileID: 340399496}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -8845455384887099115, guid: caa1681a8fad0604faddd69f17af5c7b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -482,8 +484,8 @@ AudioSource:
   m_GameObject: {fileID: 340399496}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8acaafa4b6d213c4e906f7d483c76816, type: 3}
+  OutputAudioMixerGroup: {fileID: -8105543076187875540, guid: caa1681a8fad0604faddd69f17af5c7b, type: 2}
+  m_audioClip: {fileID: 8300000, guid: e472d4d69636f1744997fb0070606d4a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1073,7 +1075,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3322309873384330346, guid: b1aa7dce18806514997e74678fbedb9f, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3322309873384330346, guid: b1aa7dce18806514997e74678fbedb9f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1909,7 +1911,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!1001 &1585324681
 PrefabInstance:
@@ -1924,7 +1926,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6498373115122761479, guid: cd2f91c002211d5499150cc4da6ec181, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6498373115122761479, guid: cd2f91c002211d5499150cc4da6ec181, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2642,7 +2644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9041411942067629847, guid: dceddd2a04c4c0e428357007683ff209, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 9041411942067629847, guid: dceddd2a04c4c0e428357007683ff209, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2889,7 +2891,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Scene2
+          m_StringArgument: Scene4
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2141050583
@@ -3008,7 +3010,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!224 &2144733792
 RectTransform:
@@ -3026,7 +3028,7 @@ RectTransform:
   - {fileID: 2141050580}
   - {fileID: 1348000828}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

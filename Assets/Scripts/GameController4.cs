@@ -10,21 +10,21 @@ public class GameController4 : MonoBehaviour
     bool isPlaying;
 
     [SerializeField]
-    GameObject cakePart1,cakePart2,cakePart3,cakePart4;
+    GameObject cakePart1, cakePart2, cakePart3, cakePart4;
     [SerializeField]
-    GameObject candle,cherry;
+    GameObject candle, cherry;
     [SerializeField]
     GameObject bigCakeEnd;
     [SerializeField]
     ParticleSystem slash;
 
     [SerializeField]
-    GameObject UIRetry,UINextScene;
+    GameObject UIRetry, UINextScene;
     [SerializeField]
-    GameObject yingtao,gaoshou,baotou;
+    GameObject yingtao, gaoshou, baotou;
 
     [SerializeField]
-    Cake cake;    
+    Cake cake;
     [SerializeField]
     Triangle triangle;
     [SerializeField]
@@ -39,7 +39,7 @@ public class GameController4 : MonoBehaviour
     [SerializeField]
     AudioSource audioSource;
     [SerializeField]
-    AudioClip throwing,eat,dodge,turnoff,tom,blade;
+    AudioClip trueEnding, badEnding, throwing, eat, dodge, turnoff, tom, blade;
 
     void Start()
     {
@@ -108,6 +108,7 @@ public class GameController4 : MonoBehaviour
         // cake.ReturnToStartPos();
         // isPlaying = false;
         yingtao.SetActive(true);
+        audioSource.PlayOneShot(badEnding);
         UIRetry.SetActive(true);
     }
 
@@ -154,6 +155,7 @@ public class GameController4 : MonoBehaviour
         // cake.ReturnToStartPos();
         // isPlaying = false;
         gaoshou.SetActive(true);
+        audioSource.PlayOneShot(badEnding);
         UIRetry.SetActive(true);
     }
 
@@ -185,6 +187,7 @@ public class GameController4 : MonoBehaviour
         // cake.ReturnToStartPos();
         // isPlaying = false;
         baotou.SetActive(true);
+        audioSource.PlayOneShot(trueEnding);
         UINextScene.SetActive(true);
 
     }

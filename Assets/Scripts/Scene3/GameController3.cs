@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,7 +14,7 @@ public class GameController3 : MonoBehaviour
     [SerializeField]
     Knife knife;
     [SerializeField]
-    Apple apple1,apple2,apple3;
+    Apple apple1, apple2, apple3;
     [SerializeField]
     Foundation foundation;
     [SerializeField]
@@ -21,17 +22,17 @@ public class GameController3 : MonoBehaviour
     [SerializeField]
     Curtain curtain;
     [SerializeField]
-    GameObject water,blood;
+    GameObject water, blood;
 
     [SerializeField]
     GameObject UIRetry, UINextScene;
     [SerializeField]
-    GameObject yingtao, gaoshou, baotou;
+    GameObject pingguo, xiaxile, qita, sarilang, ganga, mogui;
 
     [SerializeField]
     AudioSource audioSource;
     [SerializeField]
-    AudioClip throwing, eat, dodge, turnoff, tom, blade;
+    AudioClip trueEnding, badEnding, throwing, yuanpan, nvlang, xingxing, audio_pingguo, xiaochou, suilie, renwudiaoxia;
 
     void Start()
     {
@@ -39,9 +40,12 @@ public class GameController3 : MonoBehaviour
         UINextScene.SetActive(false);
         water.SetActive(false);
         blood.SetActive(false);
-        yingtao.SetActive(false);
-        gaoshou.SetActive(false);
-        baotou.SetActive(false);
+        pingguo.SetActive(false);
+        xiaxile.SetActive(false);
+        qita.SetActive(false);
+        sarilang.SetActive(false);
+        ganga.SetActive(false);
+        mogui.SetActive(false);
     }
 
     public void ThrowInputHandler(InputAction.CallbackContext callback)
@@ -62,13 +66,13 @@ public class GameController3 : MonoBehaviour
                 switch (raycastHit.transform.gameObject.name)
                 {
                     case "apple1":
-                        StartCoroutine(HitApple(raycastHit.point,1));
+                        StartCoroutine(HitApple(raycastHit.point, 1));
                         break;
                     case "apple2":
-                        StartCoroutine(HitApple(raycastHit.point,2));
+                        StartCoroutine(HitApple(raycastHit.point, 2));
                         break;
                     case "apple3":
-                        StartCoroutine(HitApple(raycastHit.point,3));
+                        StartCoroutine(HitApple(raycastHit.point, 3));
                         break;
                     case "clown":
                         StartCoroutine(HitClown(raycastHit.point));
@@ -82,24 +86,25 @@ public class GameController3 : MonoBehaviour
                     case "foundation":
                         StartCoroutine(HitFoundation(raycastHit.point));
                         break;
-                    case "curtain":
+                    case "star":
                         StartCoroutine(HitCurtain(raycastHit.point));
                         break;
-                    
+
                 }
             }
             // Debug.DrawRay(ray.origin,ray.direction,Color.red,100);
             // Debug.Log(ray);
         }
     }
-    
-    IEnumerator HitApple(Vector3 tarpos,int appleId)
+
+    IEnumerator HitApple(Vector3 tarpos, int appleId)
     {
-        isPlaying=true;
+        isPlaying = true;
         audioSource.PlayOneShot(throwing);
         yield return StartCoroutine(knife.Throw(tarpos));
 
-        switch(appleId)
+        audioSource.PlayOneShot(audio_pingguo);
+        switch (appleId)
         {
             case 1:
                 yield return StartCoroutine(apple1.Hit());
@@ -113,54 +118,61 @@ public class GameController3 : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1);
-        yingtao.SetActive(true);
+        qita.SetActive(true);
+        audioSource.PlayOneShot(badEnding);
         UIRetry.SetActive(true);
     }
 
     IEnumerator HitClown(Vector3 tarpos)
     {
-        isPlaying=true;
+        isPlaying = true;
         audioSource.PlayOneShot(throwing);
         yield return StartCoroutine(knife.Throw(tarpos));
 
-        blood.transform.position=tarpos;
+        audioSource.PlayOneShot(xiaochou);
+        blood.transform.position = tarpos;
         blood.SetActive(true);
 
         yield return new WaitForSeconds(1);
-        yingtao.SetActive(true);
+        sarilang.SetActive(true);
+        audioSource.PlayOneShot(badEnding);
         UIRetry.SetActive(true);
     }
 
     IEnumerator HitBoard(Vector3 tarpos)
     {
-        isPlaying=true;
+        isPlaying = true;
         audioSource.PlayOneShot(throwing);
         yield return StartCoroutine(knife.Throw(tarpos));
 
+        audioSource.PlayOneShot(yuanpan);
         water.SetActive(true);
 
         yield return new WaitForSeconds(1);
-        yingtao.SetActive(true);
+        xiaxile.SetActive(true);
+        audioSource.PlayOneShot(badEnding);
         UIRetry.SetActive(true);
     }
 
     IEnumerator HitWoman(Vector3 tarpos)
     {
-        isPlaying=true;
+        isPlaying = true;
         audioSource.PlayOneShot(throwing);
         yield return StartCoroutine(knife.Throw(tarpos));
 
-        blood.transform.position=tarpos;
+        audioSource.PlayOneShot(nvlang);
+        blood.transform.position = tarpos;
         blood.SetActive(true);
 
         yield return new WaitForSeconds(1);
-        yingtao.SetActive(true);
+        mogui.SetActive(true);
+        audioSource.PlayOneShot(badEnding);
         UIRetry.SetActive(true);
     }
 
     IEnumerator HitFoundation(Vector3 tarpos)
     {
-        isPlaying=true;
+        isPlaying = true;
         audioSource.PlayOneShot(throwing);
         yield return StartCoroutine(knife.Throw(tarpos));
 
@@ -168,23 +180,27 @@ public class GameController3 : MonoBehaviour
         apple1.gameObject.SetActive(false);
         apple2.gameObject.SetActive(false);
         apple3.gameObject.SetActive(false);
+        audioSource.PlayOneShot(renwudiaoxia);
         yield return StartCoroutine(clownAndBoard.Fall());
 
         yield return new WaitForSeconds(1);
-        yingtao.SetActive(true);
+        pingguo.SetActive(true);
+        audioSource.PlayOneShot(trueEnding);
         UINextScene.SetActive(true);
     }
 
     IEnumerator HitCurtain(Vector3 tarpos)
     {
-        isPlaying=true;
+        isPlaying = true;
         audioSource.PlayOneShot(throwing);
         yield return StartCoroutine(knife.Throw(tarpos));
 
+        audioSource.PlayOneShot(xingxing);
         yield return StartCoroutine(curtain.Close());
 
         yield return new WaitForSeconds(1);
-        yingtao.SetActive(true);
-        UINextScene.SetActive(true);
+        ganga.SetActive(true);
+        audioSource.PlayOneShot(badEnding);
+        UIRetry.SetActive(true);
     }
 }

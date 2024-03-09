@@ -4,35 +4,24 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class GameControllerMainMenu : MonoBehaviour
-{
-    [SerializeField]
-    SpriteRenderer hoopSpriteRenderer;
-
+{   
     [SerializeField]
     Ball ball;
-    [SerializeField]
-    Player player;
-    [SerializeField]
-    Referee referee;
-    [SerializeField]
-    Transform hoopPos, goalGroundPos;
-    [SerializeField]
-    Transform hitRefereeGroundPos;
 
     [SerializeField]
     AudioSource audioSource;
+
     [SerializeField]
-    AudioClip knockBall, whistling, boos, hurt, undressing, goal;
+    AudioClip UIHitNothing,UIHitButton;
 
     bool isPlaying;
-
 
     public void ThrowInputHandler(InputAction.CallbackContext callback)
     {
         if (callback.performed)
         {
-            if (isPlaying)
-                return;
+            if(isPlaying)
+                return ;
             Vector3 mousePos = Mouse.current.position.ReadValue();
             mousePos.z = Camera.main.transform.position.z;
             Ray ray = Camera.main.ScreenPointToRay(mousePos);
@@ -44,20 +33,35 @@ public class GameControllerMainMenu : MonoBehaviour
                 // Debug.DrawLine(raycastHit.point, raycastHit.point + Vector3.up, Color.red, 100);
                 switch (raycastHit.transform.gameObject.name)
                 {
-                    case "ground":
-                        StartCoroutine(HitGround(raycastHit.point));
+                    case "StartObj":
+                        StartCoroutine(HitStartButton(raycastHit.point));
                         break;
-                    case "playerFace":
-                        StartCoroutine(HitPlayerFace(raycastHit.point));
+                    case "ExitObj":
+                        StartCoroutine(HitExitButton(raycastHit.point));
                         break;
-                    case "wall":
-                        StartCoroutine(HitAudience(raycastHit.point));
+                    case "OptionObj":
+                        StartCoroutine(HitOptionButton(raycastHit.point));
                         break;
-                    case "referee":
-                        StartCoroutine(HitReferee(raycastHit.point));
+                    case "LevelOneObj":
+                        StartCoroutine(HitLevelOneButton(raycastHit.point));
                         break;
-                    case "hoop":
-                        StartCoroutine(HitHoop(raycastHit.point));
+                    case "LevelTwoObj":
+                        StartCoroutine(HitLevelTwoButton(raycastHit.point));
+                        break;
+                    case "LevelThreeObj":
+                        StartCoroutine(HitLevelThreeButton(raycastHit.point));
+                        break;
+                    case "LevelFourObj":
+                        StartCoroutine(HitLevelFourButton(raycastHit.point));
+                        break;
+                    case "LockedObj":
+                        StartCoroutine(HitLockedLevelButton(raycastHit.point));
+                        break;
+                    case "BackObj":
+                        StartCoroutine(HitBackButton(raycastHit.point));
+                        break;
+                    case "nothing":
+                        StartCoroutine(HitNothing(raycastHit.point));
                         break;
                 }
             }
@@ -65,81 +69,128 @@ public class GameControllerMainMenu : MonoBehaviour
             // Debug.Log(ray);
         }
     }
-
-    IEnumerator HitGround(Vector3 tarpos)
+    IEnumerator HitNothing(Vector3 tarpos)
     {
-        isPlaying = true;
+        isPlaying=true;
+        audioSource.PlayOneShot(UIHitNothing);
         yield return StartCoroutine(ball.Throw(tarpos));
         yield return new WaitForSeconds(1);
         ball.ReturnToStartPos();
-        isPlaying = false;
+        isPlaying=false;
     }
 
-    IEnumerator HitPlayerFace(Vector3 tarpos)
+    IEnumerator HitStartButton(Vector3 tarpos)
     {
         isPlaying = true;
         yield return StartCoroutine(ball.Throw(tarpos));
-
-        hoopSpriteRenderer.sortingOrder = 30;
-        PlayAudio(hurt);
-        player.HitFace();
-        yield return StartCoroutine(ball.GoalToHoop(hoopPos.position, goalGroundPos.position));
-        PlayAudio(goal);
-        yield return StartCoroutine(ball.GoalToGround(hoopPos.position, goalGroundPos.position));
-        hoopSpriteRenderer.sortingOrder = 10;
-
-        yield return new WaitForSeconds(1);
-        player.Init();
-        ball.ReturnToStartPos();
+        //audioSource.PlayOneShot(whistling);
+        ball.PlayHitEffect();
+        audioSource.PlayOneShot(UIHitButton);
+        yield return new WaitForSeconds(0.5f);
         isPlaying = false;
+        GameBehaviour.Instance.SceneToMoveTo("LevelSelect");
     }
 
-    IEnumerator HitAudience(Vector3 tarpos)
+    IEnumerator HitExitButton(Vector3 tarpos)
     {
         isPlaying = true;
         yield return StartCoroutine(ball.Throw(tarpos));
-        PlayAudio(boos);
-        yield return StartCoroutine(ball.Fade());
-        yield return new WaitForSeconds(1);
-        ball.ReturnToStartPos();
+        //audioSource.PlayOneShot(whistling);
+        ball.PlayHitEffect();
+        audioSource.PlayOneShot(UIHitButton);
+        yield return new WaitForSeconds(0.5f);
         isPlaying = false;
+        GameBehaviour.Instance.ExitGame();
     }
 
-    IEnumerator HitReferee(Vector3 tarpos)
+    IEnumerator HitOptionButton(Vector3 tarpos)
     {
         isPlaying = true;
         yield return StartCoroutine(ball.Throw(tarpos));
-        PlayAudio(whistling);
-        yield return StartCoroutine(ball.HitReferee(hitRefereeGroundPos.position));
-        yield return new WaitForSeconds(1);
-        ball.ReturnToStartPos();
+        //audioSource.PlayOneShot(whistling);
+        ball.PlayHitEffect();
+        audioSource.PlayOneShot(UIHitButton);
+        yield return new WaitForSeconds(0.5f);
         isPlaying = false;
+        ball.ReturnToStartPos();
+        GameBehaviour.Instance.OptionSelection();
     }
 
-    IEnumerator HitHoop(Vector3 tarpos)
+    IEnumerator HitLevelOneButton(Vector3 tarpos)
     {
         isPlaying = true;
-        StartCoroutine(ball.Throw(tarpos));
-        yield return new WaitForSeconds(0.2f);
-        yield return StartCoroutine(referee.FlyToBall(tarpos));
-        PlayAudio(knockBall);
+        yield return StartCoroutine(ball.Throw(tarpos));
+        //audioSource.PlayOneShot(whistling);
+        ball.PlayHitEffect();
+        audioSource.PlayOneShot(UIHitButton);
+        yield return new WaitForSeconds(0.5f);
+        isPlaying = false;
+        GameBehaviour.Instance.SceneToMoveTo("Scene1");
+    }
 
-        Coroutine temp = StartCoroutine(ball.KnockedAway());
-        yield return StartCoroutine(referee.BackToGround(goalGroundPos.position));
+    IEnumerator HitLevelTwoButton(Vector3 tarpos)
+    {
+        isPlaying = true;
+        yield return StartCoroutine(ball.Throw(tarpos));
+        //audioSource.PlayOneShot(whistling);
+        ball.PlayHitEffect();
+        audioSource.PlayOneShot(UIHitButton);
+        yield return new WaitForSeconds(0.5f);
+        isPlaying = false;
+        GameBehaviour.Instance.SceneToMoveTo("Scene4");
+    }
 
-        yield return StartCoroutine(referee.Act());
-        PlayAudio(undressing);
-        StopCoroutine(temp);
+    IEnumerator HitLevelThreeButton(Vector3 tarpos)
+    {
+        isPlaying = true;
+        yield return StartCoroutine(ball.Throw(tarpos));
+        //audioSource.PlayOneShot(whistling);
+        ball.PlayHitEffect();
+        audioSource.PlayOneShot(UIHitButton);
+        yield return new WaitForSeconds(0.5f);
+        isPlaying = false;
+        GameBehaviour.Instance.SceneToMoveTo("Scene2");
+    }
 
-        yield return new WaitForSeconds(1);
+    IEnumerator HitLevelFourButton(Vector3 tarpos)
+    {
+        isPlaying = true;
+        yield return StartCoroutine(ball.Throw(tarpos));
+        //audioSource.PlayOneShot(whistling);
+        ball.PlayHitEffect();
+        audioSource.PlayOneShot(UIHitButton);
+        yield return new WaitForSeconds(0.5f);
+        isPlaying = false;
+        GameBehaviour.Instance.SceneToMoveTo("Scene3");
+    }
+
+    IEnumerator HitBackButton(Vector3 tarpos)
+    {
+        isPlaying = true;
+        yield return StartCoroutine(ball.Throw(tarpos));
+        //audioSource.PlayOneShot(whistling);
+        ball.PlayHitEffect();
+        audioSource.PlayOneShot(UIHitButton);
+        yield return new WaitForSeconds(0.5f);
+        isPlaying = false;
+        GameBehaviour.Instance.SceneToMoveTo("Menu");
+    }
+
+    IEnumerator HitLockedLevelButton(Vector3 tarpos)
+    {
+        isPlaying = true;
+        yield return StartCoroutine(ball.Throw(tarpos));
+        //audioSource.PlayOneShot(whistling);
+        ball.PlayHitEffect();
+        audioSource.PlayOneShot(UIHitButton);
+        yield return new WaitForSeconds(0.5f);
         ball.ReturnToStartPos();
-        referee.Init();
         isPlaying = false;
     }
 
-    void PlayAudio(AudioClip audioClip)
-    {
-        audioSource.clip = audioClip;
-        audioSource.Play();
-    }
+    // void PlayAudio(AudioClip audioClip)
+    // {
+    //     audioSource.clip=audioClip;
+    //     audioSource.Play();
+    // }
 }
