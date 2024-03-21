@@ -5,7 +5,20 @@ using UnityEngine;
 public class Plane : MonoBehaviour
 {
     [SerializeField]
+    float animationDelay;
+    [SerializeField]
+    Sprite[] plane;
+
+    SpriteRenderer spriteRenderer;
+
+    [SerializeField]
     float toBinDuration;
+
+    void Start()
+    {
+        spriteRenderer=GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite=plane[0];
+    }
 
     public IEnumerator ToBin(Vector3 binPos)
     {
@@ -17,7 +30,16 @@ public class Plane : MonoBehaviour
             transform.position = CalculateBezierPoint((Time.time - startTime) / toBinDuration, startPos, controlPoint, binPos);
             yield return 0;
         }
-    }    
+    }
+
+    public IEnumerator BreakThePlane()
+    {
+        for(int i=1;i<plane.Length;i++)
+        {
+            spriteRenderer.sprite=plane[i];
+            yield return new WaitForSeconds(animationDelay);
+        }
+    }
     
     Vector3 CalculateBezierPoint(float t, Vector3 p0, Vector3 p1, Vector3 p2)
     {

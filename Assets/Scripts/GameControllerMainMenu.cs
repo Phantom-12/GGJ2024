@@ -9,6 +9,9 @@ public class GameControllerMainMenu : MonoBehaviour
     Ball ball;
 
     [SerializeField]
+    GameObject volumnControlUI;
+
+    [SerializeField]
     AudioSource audioSource;
 
     [SerializeField]
@@ -113,7 +116,7 @@ public class GameControllerMainMenu : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         isPlaying = false;
         ball.ReturnToStartPos();
-        GameBehaviour.Instance.OptionSelection();
+        volumnControlUI.SetActive(true);
     }
 
     IEnumerator HitLevelOneButton(Vector3 tarpos)

@@ -7,7 +7,6 @@ public class GameBehaviour : MonoBehaviour
 {
     public static GameBehaviour Instance;
     [SerializeField] Animator transitionAnim;
-    [SerializeField] GameObject volumeControlUI;
 
     private string sceneName;
 
@@ -26,18 +25,13 @@ public class GameBehaviour : MonoBehaviour
     public void SceneToMoveTo(string sceneName)
     {
         StartCoroutine(LoadLevel(sceneName));
+        transitionAnim.gameObject.SetActive(true);
         //SceneManager.LoadScene("SampleScene");
     }
 
     public void ExitGame()
     {
         Application.Quit();
-    }
-
-    public void OptionSelection()
-    {
-        volumeControlUI.SetActive(true);
-        return;
     }
 
     IEnumerator LoadLevel(string sceneName)

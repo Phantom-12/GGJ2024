@@ -1559,7 +1559,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionAnim: {fileID: 1964698029}
-  volumeControlUI: {fileID: 511909816}
 --- !u!1 &795013814
 GameObject:
   m_ObjectHideFlags: 0
@@ -3465,6 +3464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 1260693324}
+  volumnControlUI: {fileID: 511909816}
   audioSource: {fileID: 1456178468}
   UIHitNothing: {fileID: 8300000, guid: cb3f998f12cff7e45aef58c50a1c3beb, type: 3}
   UIHitButton: {fileID: 8300000, guid: 716926d8aa4f8214dbd9af2648d79ceb, type: 3}
@@ -4598,7 +4598,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1964698029
 Animator:
   serializedVersion: 5

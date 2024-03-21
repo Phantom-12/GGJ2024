@@ -22,6 +22,8 @@ public class GameController3 : MonoBehaviour
     [SerializeField]
     Curtain curtain;
     [SerializeField]
+    Star star;
+    [SerializeField]
     GameObject water, blood;
 
     [SerializeField]
@@ -87,7 +89,7 @@ public class GameController3 : MonoBehaviour
                         StartCoroutine(HitFoundation(raycastHit.point));
                         break;
                     case "star":
-                        StartCoroutine(HitCurtain(raycastHit.point));
+                        StartCoroutine(HitStar(raycastHit.point));
                         break;
 
                 }
@@ -189,13 +191,14 @@ public class GameController3 : MonoBehaviour
         UINextScene.SetActive(true);
     }
 
-    IEnumerator HitCurtain(Vector3 tarpos)
+    IEnumerator HitStar(Vector3 tarpos)
     {
         isPlaying = true;
         audioSource.PlayOneShot(throwing);
         yield return StartCoroutine(knife.Throw(tarpos));
 
         audioSource.PlayOneShot(xingxing);
+        StartCoroutine(star.BreakTheStar());
         yield return StartCoroutine(curtain.Close());
 
         yield return new WaitForSeconds(1);

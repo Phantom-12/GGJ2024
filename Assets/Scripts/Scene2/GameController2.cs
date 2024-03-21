@@ -113,6 +113,7 @@ public class GameController2 : MonoBehaviour
         audioSource.PlayOneShot(throwing);
         yield return StartCoroutine(trash.Throw(tarpos));
         audioSource.PlayOneShot(dishang);
+        audioSource.PlayOneShot(jingcha);
         yield return StartCoroutine(cop.ToTrash(tarpos));
 
         yield return new WaitForSeconds(1);
@@ -132,6 +133,7 @@ public class GameController2 : MonoBehaviour
         yield return StartCoroutine(trash.Throw(tarpos));
 
         StartCoroutine(trash.Fade());
+        StartCoroutine(plane.BreakThePlane());
         yield return StartCoroutine(plane.ToBin(planeBinPoint.position));
         audioSource.PlayOneShot(polie);
 

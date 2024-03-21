@@ -39,7 +39,7 @@ public class GameController4 : MonoBehaviour
     [SerializeField]
     AudioSource audioSource;
     [SerializeField]
-    AudioClip trueEnding, badEnding, throwing, eat, dodge, turnoff, tom, blade;
+    AudioClip trueEnding, badEnding, throwing, eat, dodge, turnoff, fight, blade;
 
     void Start()
     {
@@ -169,7 +169,7 @@ public class GameController4 : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         darkness.SetActive(true);
         yield return new WaitForSeconds(0.5f);
-        audioSource.PlayOneShot(tom);
+        audioSource.PlayOneShot(fight);
         yield return new WaitForSeconds(2.5f);
         audioSource.PlayOneShot(turnoff);
         bigCake.gameObject.SetActive(false);

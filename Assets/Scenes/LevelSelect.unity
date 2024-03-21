@@ -3726,7 +3726,7 @@ AudioSource:
   m_GameObject: {fileID: 1456178467}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -8845455384887099115, guid: caa1681a8fad0604faddd69f17af5c7b, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -3822,7 +3822,7 @@ AudioSource:
   m_GameObject: {fileID: 1456178467}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -8105543076187875540, guid: caa1681a8fad0604faddd69f17af5c7b, type: 2}
   m_audioClip: {fileID: 8300000, guid: 528859b634783b64594eb0bb61463ce2, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -4023,6 +4023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 1260693324}
+  volumnControlUI: {fileID: 0}
   audioSource: {fileID: 1456178468}
   UIHitNothing: {fileID: 8300000, guid: cb3f998f12cff7e45aef58c50a1c3beb, type: 3}
   UIHitButton: {fileID: 8300000, guid: 716926d8aa4f8214dbd9af2648d79ceb, type: 3}
@@ -4639,7 +4640,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionAnim: {fileID: 1964698029}
-  volumeControlUI: {fileID: 0}
 --- !u!1 &1806538126
 GameObject:
   m_ObjectHideFlags: 0
@@ -5207,7 +5207,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 12
-  m_Sprite: {fileID: 21300000, guid: c6ecbcd14dde88a49a6d98779071615b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b684d45fddff83641be0ca9eef9546f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5527,7 +5527,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 12
-  m_Sprite: {fileID: 21300000, guid: 948dbe984029c9344af05f32229b61e7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bb924600130c819428203ffd32627944, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

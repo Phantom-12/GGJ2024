@@ -14,9 +14,5 @@ public class BallHit : MonoBehaviour
         {
             GameBehaviour.Instance.ExitGame();
         }
-        else if (collision.gameObject.tag == "OptionTag")
-        {
-            GameBehaviour.Instance.OptionSelection();
-        }
     }
 }

@@ -322,6 +322,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25364d30e14f194fbb2c615f28ddb5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationDelay: 0.2
+  plane:
+  - {fileID: 21300000, guid: fc5ad2e313ba8a645ade1229a4a64735, type: 3}
+  - {fileID: 21300000, guid: 2eb5e9e2624f3114eabb708cc8a53e4a, type: 3}
+  - {fileID: 21300000, guid: eefd5136c43235345be96311fbc47832, type: 3}
   toBinDuration: 1
 --- !u!65 &117131863
 BoxCollider:
@@ -2153,7 +2158,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 786baaf3188ea47c8b20a9d8ee7ef02a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: db2cd13addbc484439e6b90225324ed3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

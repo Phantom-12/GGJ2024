@@ -828,7 +828,7 @@ MonoBehaviour:
   eat: {fileID: 8300000, guid: 745fd7814ef199d46a43a8d436315765, type: 3}
   dodge: {fileID: 8300000, guid: 2949b15c46c1dca479ec3a8d44d8d6d4, type: 3}
   turnoff: {fileID: 8300000, guid: adddc7039cfabba4cb9bf4e6dc952ea3, type: 3}
-  tom: {fileID: 8300000, guid: d41454c0d82fc824e855bf860c6264d4, type: 3}
+  fight: {fileID: 8300000, guid: 18e3fcbfc2988f24299bdde620464f7b, type: 3}
   blade: {fileID: 8300000, guid: 059215b45e156d84a84d900f2b5f0137, type: 3}
 --- !u!1 &415868675
 GameObject:
